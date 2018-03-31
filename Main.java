@@ -15,11 +15,12 @@ public class Main {
     };
 
     public static void main(String[] args) {
-        
+
         System.out.println("Test Start");
 
         happyPath();
         multipleSpaces();
+        nullTitle();
         getSuperAwesomeTitle();
         getDefaultSuperAwesomeTitleOnError();
 
@@ -44,6 +45,18 @@ public class Main {
         System.out.println("Expect getTitleStats to return a phrase with the number of words in the title, even when there are mutliple consecutive spaces");
         String result = superAwesomeRobots.getTitleStats("Robot's   evil   apprentice");
         if (result.equals("There are 3 words in this title.")) {
+            System.out.println("\tPASSED");
+        } else {
+            System.out.println("\tFAILED");
+        }
+
+    }
+
+    public static void nullTitle() {
+        
+        System.out.println("Expect a null title to return the same as 0 words");
+        String result = superAwesomeRobots.getTitleStats(null);
+        if (result.equals("There are 0 words in this title.")) {
             System.out.println("\tPASSED");
         } else {
             System.out.println("\tFAILED");

@@ -13,11 +13,13 @@ public class SuperAwesomeRobots {
     }
 
     protected String getTitleStats(String title) {
-        String[] words = title.split(" ");
         int wordCount = 0;
-        for (int i = 0; i < words.length; i++) {
-            if (words[i].trim().length() > 0) {
-                wordCount++;
+        if (title != null) {
+            String[] words = title.split(" ");
+            for (int i = 0; i < words.length; i++) {
+                if (words[i].trim().length() > 0) {
+                    wordCount++;
+                }
             }
         }
         return "There are " + wordCount + " words in this title.";
