@@ -7,6 +7,12 @@ public class Main {
             return "Super Duper Muscle Bros";
         }
     };
+    public static RoboticsDatabase mockNullRoboticsDatabase = new RoboticsDatabase() {
+        @Override
+        public String getRandomTitle() throws Exception {
+            return null;
+        }
+    };
     public static RoboticsDatabase mockErrorRoboticsDatabase = new RoboticsDatabase() {
         @Override
         public String getRandomTitle() throws Exception {
@@ -23,6 +29,7 @@ public class Main {
         nullTitle();
         getSuperAwesomeTitle();
         getDefaultSuperAwesomeTitleOnError();
+        getNullSuperAwesomeTitle();
 
         System.out.println("Test End");
 
@@ -83,6 +90,20 @@ public class Main {
         superAwesomeRobots.roboticsDatabase = mockErrorRoboticsDatabase;
 
         System.out.println("Expect to get a super awesome default title when a database error happens");
+        String result = superAwesomeRobots.getSuperAwesomeTitle();
+        if (result.equals("Mega Interplanetary Ninja Assasin; There are 4 words in this title.")) {
+            System.out.println("\tPASSED");
+        } else {
+            System.out.println("\tFAILED");
+        }
+
+    }
+
+    public static void getNullSuperAwesomeTitle() {
+        
+        superAwesomeRobots.roboticsDatabase = mockNullRoboticsDatabase;
+
+        System.out.println("Expect to get a super awesome title, even when null is returned from the datbase");
         String result = superAwesomeRobots.getSuperAwesomeTitle();
         if (result.equals("Mega Interplanetary Ninja Assasin; There are 4 words in this title.")) {
             System.out.println("\tPASSED");

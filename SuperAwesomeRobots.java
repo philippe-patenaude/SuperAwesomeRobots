@@ -6,6 +6,9 @@ public class SuperAwesomeRobots {
         String title = null;
         try {
             title = roboticsDatabase.getRandomTitle();
+            if (title == null) {
+                throw new Exception("No title was returned from the database.");
+            }
         } catch (Exception ex) {
             title = "Mega Interplanetary Ninja Assasin";
         }
