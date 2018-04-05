@@ -9,10 +9,10 @@ public class SuperAwesomeRobots {
         } catch (Exception ex) {
             title = "Mega Interplanetary Ninja Assasin";
         }
-        return title + "; " + getTitleStats(title);
+        return title + "; There are " + getWordCount(title) + " words in this title.";
     }
 
-    protected String getTitleStats(String title) {
+    protected int getWordCount(String title) {
         int wordCount = 0;
         if (title != null) {
             String[] words = title.split(" ");
@@ -22,7 +22,7 @@ public class SuperAwesomeRobots {
                 }
             }
         }
-        return "There are " + wordCount + " words in this title.";
+        return wordCount;
     }
 
 }
